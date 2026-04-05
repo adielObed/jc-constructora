@@ -1,0 +1,20 @@
+# Dependencias de Node
+node_modules/
+frontend/node_modules/
+
+# Build de Angular (se regenera con ng build)
+frontend/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Variables de entorno
+.env
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
