@@ -1,0 +1,199 @@
+<!-- Header -->
+<header class="header">
+  <div class="logo">
+    <!-- Opción para agregar el logo real; Si la imagen falla, muestra el nombre (alt) -->
+    <a (click)="scrollTo('hero')" style="cursor: pointer;">
+      <img src="assets/images/logo-jc.jpg" alt="JC Constructora S.A.S" class="logo-img">
+    </a>
+  </div>
+  <nav>
+    <ul class="nav-links">
+      <li (click)="scrollTo('hero')">Inicio</li>
+      <li (click)="scrollTo('services')">Servicios</li>
+      <li (click)="scrollTo('projects')">Proyectos</li>
+      <li (click)="scrollTo('about')">Nosotros</li>
+    </ul>
+  </nav>
+  <a [href]="contact.whatsappLink" target="_blank" class="header-contact">Contacto</a>
+</header>
+
+<!-- Hero Section -->
+<section id="hero" class="hero animate-fade">
+  <div class="hero-content">
+    <h1>Ingeniería Y Construcción En Casanare</h1>
+    <p>Somos JC Constructora S.A.S, expertos en ejecución de obras civiles, mantenimiento y diseño de infraestructuras
+      de alto impacto con proyección constructiva para el futuro de la región.</p>
+    <button (click)="scrollTo('projects')" class="btn btn-primary">
+      Ver Proyectos <span class="material-symbols-outlined" translate="no">arrow_outward</span>
+    </button>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-section section-padding">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Nuestros Servicios</span>
+      <h2>Un Conjunto Integral de Servicios Constructivos</h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let service of services">
+        <div class="service-image-box">
+          <img [src]="service.image" [alt]="service.title" class="service-bg-img">
+          <div class="service-overlay"></div>
+        </div>
+
+        <div class="service-content">
+          <span class="material-symbols-outlined service-icon" translate="no">{{ service.icon }}</span>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Gallery Section -->
+<section id="projects" class="projects-section section-padding">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Trabajos Recientes</span>
+      <h2>Echa un vistazo a nuestros últimos proyectos</h2>
+      <p style="color: #bbb; margin-top: 10px;">Ejecución destacada para Diana Corporación S.A.S.</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of projects">
+        <img [src]="project.image" [alt]="project.title">
+        <div class="project-info">
+          <h4>{{ project.title }}</h4>
+          <p>{{ project.client }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section (Rediseñado para ser más llamativo) -->
+<section id="about" class="about-section section-padding">
+  <div class="container about-grid">
+    <div class="about-image-wrapper">
+      <img src="assets/images/sobre-nosotros.jpg" alt="Infraestructura Constructiva" class="about-hero-img">
+      <div class="about-badge">
+        <span class="material-symbols-outlined" translate="no"
+          style="font-size: 40px; color: var(--primary);">verified</span>
+        <span style="font-weight: 700; display: block; margin-top: 5px;">Calidad Verificada</span>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <span class="section-label">Sobre Nosotros</span>
+      <h2>Visión 2030: Transformando el panorama estructural</h2>
+
+      <div class="about-item">
+        <span class="material-symbols-outlined" translate="no">stars</span>
+        <div>
+          <h3>Nuestra Misión</h3>
+          <p>En JC Constructora ejecutamos proyectos de infraestructura y mantenimiento de obra civil con una estricta
+            filosofía de calidad, seguridad y compromiso ambiental inquebrantable.</p>
+        </div>
+      </div>
+
+      <div class="about-item">
+        <span class="material-symbols-outlined" translate="no">trending_up</span>
+        <div>
+          <h3>Nuestra Visión</h3>
+          <p>Aspiramos a consolidarnos como la empresa líder en soluciones integrales constructivas en Casanare,
+            impulsando el desarrollo industrial y urbano sustentable. Nos destacamos por nuestra solidez técnica y
+            adaptabilidad a grandes retos.</p>
+        </div>
+      </div>
+
+      <a [href]="contact.whatsappLink" target="_blank" class="btn btn-primary" style="margin-top: 30px;">
+        Hablemos de su Proyecto
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <img src="assets/images/logo-jc.jpg" alt="JC Constructora S.A.S" class="footer-top-logo">
+    <p class="footer-desc">Construcciones, soldaduras y tapizados. Su aliado estratégico para la ejecución de grandes proyectos en el Casanare.</p>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-columns">
+
+    <!-- Columna 1: Navegación -->
+    <div class="footer-col">
+      <h4 class="footer-heading">Navegación</h4>
+      <ul class="footer-links">
+        <li (click)="scrollTo('hero')">Inicio</li>
+        <li (click)="scrollTo('services')">Nuestros Servicios</li>
+        <li (click)="scrollTo('projects')">Trabajos Recientes</li>
+        <li (click)="scrollTo('about')">Sobre Nosotros</li>
+      </ul>
+    </div>
+
+    <!-- Columna 2: Servicios -->
+    <div class="footer-col">
+      <h4 class="footer-heading">Servicios</h4>
+      <ul class="footer-links">
+        <li>Construcción de Obras Civiles</li>
+        <li>Mantenimiento de Obra Civil</li>
+        <li>Fabricación de Estructuras Metálicas</li>
+        <li>Tapizados Industriales</li>
+      </ul>
+    </div>
+
+    <!-- Columna 3: Contacto -->
+    <div class="footer-col">
+      <h4 class="footer-heading">Contáctenos</h4>
+      <div class="footer-contact-list">
+        <div class="footer-contact-item">
+          <span class="material-symbols-outlined" translate="no">call</span>
+          <div>
+            <small>Teléfono 1</small>
+            <a href="tel:{{contact.phones[0]}}">{{ contact.phones[0] }}</a>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <span class="material-symbols-outlined" translate="no">call</span>
+          <div>
+            <small>Teléfono 2</small>
+            <a href="tel:{{contact.phones[1]}}">{{ contact.phones[1] }}</a>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <span class="material-symbols-outlined" translate="no">location_on</span>
+          <div>
+            <small>Dirección</small>
+            <span>{{ contact.address }}</span>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <span class="material-symbols-outlined" translate="no">schedule</span>
+          <div>
+            <small>Horario</small>
+            <span>Lun - Sab: 7:00am - 6:00pm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; 2026 Construcciones Soldaduras y Tapizados JC S.A.S &mdash; Todos los derechos reservados.</span>
+    <span>Yopal, Casanare &mdash; Colombia</span>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp Action Button -->
+<a [href]="contact.whatsappLink" target="_blank" class="floating-whatsapp" aria-label="Contactar por WhatsApp">
+  <span class="material-symbols-outlined" translate="no" style="font-size: 30px;">chat</span>
+</a>
