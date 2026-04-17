@@ -2,9 +2,11 @@
 
 /* Header */
 .header {
-  background-color: var(--dark-surface);
-  color: var(--light);
-  padding: 15px 5%;
+  background-color: rgba(255, 255, 255, 0.82); /* Blanco traslúcido profesional */
+  backdrop-filter: blur(12px); /* Efecto Frosted Glass de alta gama */
+  -webkit-backdrop-filter: blur(12px);
+  color: #000000;
+  padding: 12px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,18 +14,19 @@
   width: 100%;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-bottom: 3px solid var(--primary); /* Acento amarillo corporativo */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
 .logo-img {
-  height: 80px;
+  height: 70px;
   width: auto;
   max-width: 300px;
   display: block;
   object-fit: contain;
-  /* Hace que el fondo blanco del JPG desaparezca sobre colores oscuros */
-  mix-blend-mode: screen;
-  filter: brightness(1.1);
+  /* En fondo blanco el JPG se integra naturalmente */
+  filter: none;
 }
 
 .footer-logo-img {
@@ -45,31 +48,50 @@
 
 .nav-links li {
   cursor: pointer;
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--light);
+  font-weight: 600;
+  font-size: 1rem;
+  color: #000000;
   transition: var(--transition);
+  position: relative;
+  padding: 5px 0;
 }
 
 .nav-links li:hover {
   color: var(--primary);
 }
 
+.nav-links li::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-links li:hover::after {
+  width: 100%;
+}
+
 .header-contact {
   font-family: 'Outfit', sans-serif;
-  color: var(--primary);
-  font-weight: 700;
-  border: 1px solid var(--primary);
-  background-color: transparent;
-  padding: 10px 20px;
-  border-radius: 4px;
+  color: #000000; /* Texto negro para contraste */
+  font-weight: 800;
+  background-color: var(--primary); /* Fondo amarillo sólido */
+  padding: 12px 28px;
+  border-radius: 6px; /* Bordes técnicos, no redondeados */
+  border: none;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header-contact:hover {
-  background-color: var(--primary);
-  color: var(--dark);
-  box-shadow: 0 4px 10px rgba(246, 201, 14, 0.4);
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(246, 201, 14, 0.3);
+  filter: brightness(1.05);
 }
 
 /* Hero Section */
@@ -79,13 +101,60 @@
   display: flex;
   align-items: center;
   padding: 0 5%;
-  /* Capa de contraste oscuro para destacar textos e impactar (Estilo Industrial pesado) */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('../assets/images/img-portada.jpg');
+  /* Overlay claro tipo "Clean Industrial" */
+  background-image: 
+    linear-gradient(to bottom, 
+      rgba(255, 255, 255, 0.9) 0%, 
+      rgba(255, 255, 255, 0.6) 40%, 
+      rgba(255, 255, 255, 0.8) 100%
+    ), 
+    url('../assets/images/img-portada-new.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  color: var(--light);
+  color: #000000;
   padding-top: 80px;
+}
+
+.hero-h-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Patrón de silueta de viga tipo H estructural */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M20 20h40v6H43v28h17v6H20v-6h17V26H20v-6z' fill='%23CCCCCC' fill-opacity='0.06'/%3E%3C/svg%3E");
+  background-size: 100px 100px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-corner-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 45%;
+  height: 35%;
+  background-color: rgba(246, 201, 14, 0.12); /* Amarillo corporativo traslúcido */
+  clip-path: polygon(0 100%, 100% 100%, 0 0); /* Nodo de cercha / Triángulo estructural */
+  pointer-events: none;
+  z-index: 1;
+  /* Desvanecimiento sutil para no cortar abruptamente */
+  mask-image: linear-gradient(to top right, black 40%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to top right, black 40%, transparent 95%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 25px;
+  background-color: var(--primary);
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+  z-index: 2;
 }
 
 .hero-content {
@@ -103,10 +172,9 @@
 
 .hero p {
   font-size: 1.2rem;
-  color: #ccc;
+  color: #000000;
   margin-bottom: 40px;
   max-width: 600px;
-  text-shadow: 0 1px 5px rgba(0,0,0,0.5);
 }
 
 .hero .btn {
@@ -285,12 +353,12 @@
 
 /* Projects - Retornado a Oscuro Premium */
 .projects-section {
-  background-color: var(--dark);
-  color: var(--light);
+  background-color: #f8f9fa;
+  color: #000000;
 }
 
 .projects-section .section-header h2 {
-  color: var(--light);
+  color: #111111;
 }
 
 .projects-section .section-label {
@@ -338,7 +406,7 @@
 
 .project-info p {
   font-size: 0.9rem;
-  color: #bbb;
+  color: #000000;
 }
 
 .project-card:hover img {
@@ -348,13 +416,13 @@
 
 /* About Section - Retornado a Oscuro Premium */
 .about-section {
-  background-color: #1a1a1a;
-  color: var(--light);
+  background-color: #ffffff;
+  color: #333333;
 }
 
 .about-section .section-header h2,
 .about-content h2 {
-  color: var(--light);
+  color: #000000;
 }
 
 .about-grid {
@@ -428,15 +496,16 @@
 }
 
 .about-item p {
-  color: #aaa;
+  color: #000000;
   font-size: 0.95rem;
 }
 
 /* Footer */
 .footer {
-  background-color: var(--dark);
-  color: var(--light);
+  background-color: #f4f4f4;
+  color: #000000;
   padding: 0;
+  border-top: 1px solid #ddd;
 }
 
 /* Fila superior: logo + desc centrado */
@@ -449,12 +518,10 @@
 }
 
 .footer-top-logo {
-  height: 90px;
+  height: 80px;
   width: auto;
   max-width: 280px;
   object-fit: contain;
-  mix-blend-mode: screen;
-  filter: brightness(1.1);
   margin-bottom: 15px;
 }
 
@@ -476,7 +543,7 @@
 }
 
 .footer-desc {
-  color: #999;
+  color: #000000;
   font-size: 0.95rem;
   line-height: 1.7;
   max-width: 500px;
@@ -520,7 +587,7 @@
 }
 
 .footer-links li {
-  color: #999;
+  color: #000000;
   font-size: 0.9rem;
   cursor: pointer;
   transition: var(--transition);
@@ -563,7 +630,7 @@
 
 .footer-contact-item small {
   display: block;
-  color: #777;
+  color: #333;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -572,7 +639,7 @@
 
 .footer-contact-item a,
 .footer-contact-item span {
-  color: #ccc;
+  color: #000000;
   font-size: 0.9rem;
   display: block;
 }
@@ -587,7 +654,7 @@
   align-items: center;
   padding: 25px 0;
   font-size: 0.82rem;
-  color: #666;
+  color: #000000;
 }
 
 /* Responsive footer */
@@ -689,4 +756,197 @@
     border-radius: 0;
     border-top-left-radius: 8px;
   }
+}
+
+/* Portfolio Carousel */
+.carousel-container {
+  position: relative;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  background: #000;
+  margin-top: 40px;
+}
+
+.carousel-slide {
+  height: 100%;
+  width: 100%;
+  animation: fadeIn 0.5s ease;
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.carousel-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 60px;
+  width: 100%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  color: white;
+  z-index: 2;
+  text-align: left;
+}
+
+.carousel-content h3 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: white !important;
+}
+
+.carousel-content p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  max-width: 600px;
+  color: rgba(255,255,255,0.8) !important;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.nav-btn {
+  pointer-events: auto;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: var(--primary);
+  color: black;
+}
+
+/* Instagram Grid */
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.grid-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.grid-item:hover img {
+  transform: scale(1.1);
+}
+
+.grid-item:hover .grid-overlay {
+  opacity: 1;
+}
+
+.grid-overlay span {
+  color: var(--primary);
+  font-size: 40px;
+}
+
+/* Lightbox Modal */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 4px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+.lightbox-caption {
+  margin-top: 20px;
+  color: white;
+  text-align: center;
+  background: var(--primary);
+  color: black;
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .carousel-container { height: 400px; }
+  .carousel-content { padding: 30px; }
+  .carousel-content h3 { font-size: 1.8rem; }
+  .instagram-grid { grid-template-columns: repeat(2, 1fr); }
 }

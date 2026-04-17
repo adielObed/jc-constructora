@@ -3,7 +3,7 @@
   <div class="logo">
     <!-- Opción para agregar el logo real; Si la imagen falla, muestra el nombre (alt) -->
     <a (click)="scrollTo('hero')" style="cursor: pointer;">
-      <img src="assets/images/logo-jc.jpg" alt="JC Constructora S.A.S" class="logo-img">
+      <img src="assets/images/logo-jc.jpg" alt="JC Constructora S.A.S Yopal" class="logo-img">
     </a>
   </div>
   <nav>
@@ -19,22 +19,86 @@
 
 <!-- Hero Section -->
 <section id="hero" class="hero animate-fade">
+  <!-- Overlays técnicos industriales -->
+  <div class="hero-h-pattern"></div>
+  <div class="hero-corner-accent"></div>
+
   <div class="hero-content">
-    <h1>Ingeniería Y Construcción En Casanare</h1>
-    <p>Somos JC Constructora S.A.S, expertos en ejecución de obras civiles, mantenimiento y diseño de infraestructuras
-      de alto impacto con proyección constructiva para el futuro de la región.</p>
-    <button (click)="scrollTo('projects')" class="btn btn-primary">
-      Ver Proyectos <span class="material-symbols-outlined" translate="no">arrow_outward</span>
+    <h1>Ingeniería Y Construcción En Colombia</h1>
+    <p>Somos JC Constructora S.A.S, especialistas en la ejecución de infraestructura técnica, mantenimiento industrial y
+      diseño de soluciones estructurales de alto impacto en la región de Yopal y todo el departamento.</p>
+    <button (click)="scrollTo('portafolio')" class="btn btn-primary">
+      Ver Portafolio Visual <span class="material-symbols-outlined" translate="no">photo_library</span>
     </button>
   </div>
 </section>
+
+<!-- Featured Projects Carousel -->
+<section class="carousel-section section-padding">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Proyectos Emblemáticos</span>
+      <h2>Experiencia Demostrada en Grandes Ejecuciones</h2>
+    </div>
+
+    <div class="carousel-container">
+      <div class="carousel-slide" *ngFor="let slide of featuredProjects; let i = index" [hidden]="i !== currentSlide">
+        <img [src]="slide.image" [alt]="slide.title" class="carousel-img">
+        <div class="carousel-content">
+          <h3>{{ slide.title }}</h3>
+          <p>{{ slide.description }}</p>
+          <button (click)="scrollTo('projects')" class="btn btn-primary">Detalles Técnicos</button>
+        </div>
+      </div>
+
+      <div class="carousel-nav">
+        <button (click)="prevSlide()" class="nav-btn"><span
+            class="material-symbols-outlined">chevron_left</span></button>
+        <button (click)="nextSlide()" class="nav-btn"><span
+            class="material-symbols-outlined">chevron_right</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Visual Portfolio Grid (Instagram Style) -->
+<section id="portafolio" class="portfolio-grid-section section-padding" style="background: #fff;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Portafolio Visual</span>
+      <h2>Nuestra Experiencia en Imágenes Técnicas</h2>
+    </div>
+
+    <div class="instagram-grid">
+      <div class="grid-item" *ngFor="let img of galleryImages" (click)="openLightbox(img)">
+        <img [src]="img.url" [alt]="img.caption">
+        <div class="grid-overlay">
+          <span class="material-symbols-outlined">zoom_in</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" *ngIf="selectedImage" (click)="closeLightbox()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <img [src]="selectedImage.url" [alt]="selectedImage.caption">
+    <div class="lightbox-caption">
+      <p>{{ selectedImage.caption }}</p>
+    </div>
+    <button class="close-btn" (click)="closeLightbox()">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+</div>
 
 <!-- Services Section -->
 <section id="services" class="services-section section-padding">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Nuestros Servicios</span>
-      <h2>Un Conjunto Integral de Servicios Constructivos</h2>
+      <span class="section-label">Capacidades Técnicas</span>
+      <h2>Soluciones Integrales para la Industria y el Sector Civil</h2>
     </div>
 
     <div class="services-grid">
@@ -54,64 +118,88 @@
   </div>
 </section>
 
-<!-- Projects Gallery Section -->
-<section id="projects" class="projects-section section-padding">
+<!-- Differentiators Section (Nueva) -->
+<section class="differentiators-section section-padding" style="background-color: #fcfcfc;">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Trabajos Recientes</span>
-      <h2>Echa un vistazo a nuestros últimos proyectos</h2>
-      <p style="color: #bbb; margin-top: 10px;">Ejecución destacada para Diana Corporación S.A.S.</p>
+      <span class="section-label">Por qué elegirnos</span>
+      <h2>Diferenciadores Estratégicos en la Ejecución de Obra</h2>
     </div>
-
-    <div class="projects-grid">
-      <div class="project-card" *ngFor="let project of projects">
-        <img [src]="project.image" [alt]="project.title">
-        <div class="project-info">
-          <h4>{{ project.title }}</h4>
-          <p>{{ project.client }}</p>
+    <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <div class="about-item" *ngFor="let diff of differentiators"
+        style="margin-bottom: 0; padding: 20px; border-left: 4px solid var(--primary); background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+        <div>
+          <h3 style="font-size: 1.1rem; margin-bottom: 8px;">{{ diff.title }}</h3>
+          <p style="font-size: 0.9rem; color: #555;">{{ diff.description }}</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- About Section (Rediseñado para ser más llamativo) -->
+<!-- Projects Gallery Section -->
+<section id="projects" class="projects-section section-padding">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Fichas Técnicas</span>
+      <h2>Portafolio de Proyectos Destacado</h2>
+      <p style="color: #666; margin-top: 10px;">Garantía de cumplimiento técnico para aliados estratégicos como
+        <strong>Diana Corporación S.A.S.</strong>
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of projects"
+        style="background: #fff; color: #000; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        <img [src]="project.image" [alt]="project.title" style="height: 250px; filter: none;">
+        <div class="project-info" style="position: static; background: white; padding: 25px;">
+          <small style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">{{
+            project.client }} | {{ project.location }}</small>
+          <h4 style="margin-top: 5px; font-size: 1.2rem;">{{ project.title }}</h4>
+          <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+            <p style="font-size: 0.85rem; margin-bottom: 8px;"><strong style="color: #222;">Reto Técnico:</strong> {{
+              project.challenge }}</p>
+            <p style="font-size: 0.85rem;"><strong style="color: #222;">Resultado:</strong> {{ project.result }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
 <section id="about" class="about-section section-padding">
   <div class="container about-grid">
     <div class="about-image-wrapper">
-      <img src="assets/images/sobre-nosotros.jpg" alt="Infraestructura Constructiva" class="about-hero-img">
+      <img src="https://i.postimg.cc/RVnxmrXG/sobre-nosotros.jpg" alt="Infraestructura Constructiva"
+        class="about-hero-img">
       <div class="about-badge">
         <span class="material-symbols-outlined" translate="no"
           style="font-size: 40px; color: var(--primary);">verified</span>
-        <span style="font-weight: 700; display: block; margin-top: 5px;">Calidad Verificada</span>
+        <span style="font-weight: 700; display: block; margin-top: 5px;">Calidad Técnica Certificada</span>
       </div>
     </div>
 
     <div class="about-content">
-      <span class="section-label">Sobre Nosotros</span>
-      <h2>Visión 2030: Transformando el panorama estructural</h2>
+      <span class="section-label">Trayectoria y Futuro</span>
+      <h2>Visión 2030: Líderes en Soluciones de Infraestructura</h2>
+      <p style="margin-bottom: 20px; font-size: 1.05rem; font-weight: 700; color: #000;">{{ seoData.nationalCoverage }}
+      </p>
+      <p style="margin-bottom: 30px; font-size: 1rem; color: #333;">{{ seoData.localAuthority }}</p>
 
-      <div class="about-item">
-        <span class="material-symbols-outlined" translate="no">stars</span>
-        <div>
-          <h3>Nuestra Misión</h3>
-          <p>En JC Constructora ejecutamos proyectos de infraestructura y mantenimiento de obra civil con una estricta
-            filosofía de calidad, seguridad y compromiso ambiental inquebrantable.</p>
+      <div class="values-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div class="about-item" *ngFor="let value of values" style="margin-bottom: 20px;">
+          <span class="material-symbols-outlined" translate="no" style="width: 45px; height: 45px; font-size: 24px;">{{
+            value.icon }}</span>
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 5px;">{{ value.title }}</h3>
+            <p style="font-size: 0.85rem; line-height: 1.4;">{{ value.description }}</p>
+          </div>
         </div>
       </div>
 
-      <div class="about-item">
-        <span class="material-symbols-outlined" translate="no">trending_up</span>
-        <div>
-          <h3>Nuestra Visión</h3>
-          <p>Aspiramos a consolidarnos como la empresa líder en soluciones integrales constructivas en Casanare,
-            impulsando el desarrollo industrial y urbano sustentable. Nos destacamos por nuestra solidez técnica y
-            adaptabilidad a grandes retos.</p>
-        </div>
-      </div>
-
-      <a [href]="contact.whatsappLink" target="_blank" class="btn btn-primary" style="margin-top: 30px;">
-        Hablemos de su Proyecto
+      <a [href]="contact.whatsappLink" target="_blank" class="btn btn-primary" style="margin-top: 20px;">
+        Asesoría Técnica Inmediata
       </a>
     </div>
   </div>
@@ -119,9 +207,12 @@
 
 <!-- Footer -->
 <footer class="footer">
-  <div class="footer-top">
+  <div class="footer-top" style="padding-bottom: 20px;">
     <img src="assets/images/logo-jc.jpg" alt="JC Constructora S.A.S" class="footer-top-logo">
-    <p class="footer-desc">Construcciones, soldaduras y tapizados. Su aliado estratégico para la ejecución de grandes proyectos en el Casanare.</p>
+    <p class="footer-desc">Expertos en infraestructura, mantenimiento industrial y soldadura certificada. Su aliado
+      estratégico para la ejecución de grandes proyectos en el Casanare.</p>
+    <p style="margin-top: 25px; font-weight: 700; color: var(--primary); font-size: 1.1rem; max-width: 700px;">{{
+      contact.ctaText }}</p>
   </div>
 
   <div class="footer-divider"></div>
