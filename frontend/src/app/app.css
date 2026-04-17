@@ -101,47 +101,31 @@
   display: flex;
   align-items: center;
   padding: 0 5%;
-  /* Overlay claro tipo "Clean Industrial" */
-  background-image: 
-    linear-gradient(to bottom, 
-      rgba(255, 255, 255, 0.9) 0%, 
-      rgba(255, 255, 255, 0.6) 40%, 
-      rgba(255, 255, 255, 0.8) 100%
-    ), 
-    url('../assets/images/img-portada-new.png');
+  /* New Technical Blueprint Background */
+  background-image: url('https://i.postimg.cc/Gpvfs140/Gemini-Generated-Image-3q4ule3q4ule3q4u.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  background-repeat: no-repeat;
   color: #000000;
   padding-top: 80px;
+  overflow: hidden;
 }
 
-.hero-h-pattern {
+/* White Legibility Overlay (85% opacity) */
+.hero::before {
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Patrón de silueta de viga tipo H estructural */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M20 20h40v6H43v28h17v6H20v-6h17V26H20v-6z' fill='%23CCCCCC' fill-opacity='0.06'/%3E%3C/svg%3E");
-  background-size: 100px 100px;
-  pointer-events: none;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.85);
   z-index: 1;
+  pointer-events: none;
 }
 
+/* Patterns removed as per new clean background design */
+.hero-h-pattern,
 .hero-corner-accent {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 45%;
-  height: 35%;
-  background-color: rgba(246, 201, 14, 0.12); /* Amarillo corporativo traslúcido */
-  clip-path: polygon(0 100%, 100% 100%, 0 0); /* Nodo de cercha / Triángulo estructural */
-  pointer-events: none;
-  z-index: 1;
-  /* Desvanecimiento sutil para no cortar abruptamente */
-  mask-image: linear-gradient(to top right, black 40%, transparent 95%);
-  -webkit-mask-image: linear-gradient(to top right, black 40%, transparent 95%);
+  display: none;
 }
 
 .hero::after {
@@ -159,7 +143,8 @@
 
 .hero-content {
   max-width: 800px;
-  z-index: 2;
+  position: relative;
+  z-index: 10; /* Resalta sobre la retícula y el degradado */
 }
 
 .hero h1 {
@@ -167,7 +152,8 @@
   margin-bottom: 20px;
   line-height: 1.1;
   text-transform: capitalize;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  font-weight: 900;
+  color: #000000;
 }
 
 .hero p {
@@ -200,7 +186,7 @@
 }
 
 .section-header {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .section-label {
@@ -766,7 +752,7 @@
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
   background: #000;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .carousel-slide {
