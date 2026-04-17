@@ -1,35 +1,50 @@
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="top-bar-container">
+    <div class="top-bar-socials">
+      <a href="#"><span class="material-symbols-outlined">mail</span></a>
+      <a href="#"><span class="material-symbols-outlined">share</span></a>
+    </div>
+    <div class="top-bar-contact">
+      <a [href]="'tel:' + contact.phones[0]"><span class="material-symbols-outlined">call</span> {{ contact.phones[0] }}</a>
+      <a href="mailto:contacto@jcconstructora.com.co"><span class="material-symbols-outlined">mail</span> contacto@jcconstructora.com.co</a>
+    </div>
+  </div>
+</div>
+
 <!-- Header -->
-<header class="header">
+<header class="header" [class.scrolled]="isScrolled">
   <div class="logo">
-    <!-- Opción para agregar el logo real; Si la imagen falla, muestra el nombre (alt) -->
     <a (click)="scrollTo('hero')" style="cursor: pointer;">
-      <img src="assets/images/logo-jc.jpg" alt="JC Constructora S.A.S Yopal" class="logo-img">
+      <img src="assets/images/logo-jc.jpg" alt="JC Constructora S.A.S" class="logo-img">
     </a>
   </div>
-  <nav>
+  <nav class="desktop-nav">
     <ul class="nav-links">
-      <li (click)="scrollTo('hero')">Inicio</li>
-      <li (click)="scrollTo('services')">Servicios</li>
-      <li (click)="scrollTo('projects')">Proyectos</li>
-      <li (click)="scrollTo('about')">Nosotros</li>
+      <li (click)="scrollTo('hero')">INICIO</li>
+      <li (click)="scrollTo('about')">¿QUIÉNES SOMOS?</li>
+      <li (click)="scrollTo('services')">SERVICIOS</li>
+      <li (click)="scrollTo('projects')">PORTAFOLIO</li>
+      <li (click)="scrollTo('contact')">CONTACTO</li>
     </ul>
   </nav>
-  <a [href]="contact.whatsappLink" target="_blank" class="header-contact">Contacto</a>
+  <div class="header-actions">
+    <a [href]="contact.whatsappLink" target="_blank" class="header-btn">SOLICITAR COTIZACIÓN</a>
+  </div>
 </header>
 
 <!-- Hero Section -->
 <section id="hero" class="hero animate-fade">
-  <!-- Overlays técnicos industriales -->
-  <div class="hero-h-pattern"></div>
-  <div class="hero-corner-accent"></div>
+  <div class="hero-overlay"></div>
 
-  <div class="hero-content">
-    <h1>Ingeniería Y Construcción En Colombia</h1>
-    <p>Somos JC Constructora S.A.S, especialistas en la ejecución de infraestructura técnica, mantenimiento industrial y
-      diseño de soluciones estructurales de alto impacto en la región de Yopal y todo el departamento.</p>
-    <button (click)="scrollTo('portafolio')" class="btn btn-primary">
-      Ver Portafolio Visual <span class="material-symbols-outlined" translate="no">photo_library</span>
-    </button>
+  <div class="hero-content centered">
+    <h1 class="hero-title">Ingeniería Y Construcción En Colombia</h1>
+    <div class="hero-bar"></div>
+    <p class="hero-subtitle">Especialistas en infraestructura técnica, mantenimiento industrial y diseño estructural de alto impacto.</p>
+    <div class="hero-btns">
+      <button (click)="scrollTo('services')" class="btn btn-primary">NUESTROS SERVICIOS</button>
+      <button (click)="scrollTo('portafolio')" class="btn btn-outline">VER PORTAFOLIO</button>
+    </div>
   </div>
 </section>
 

@@ -1,18 +1,17 @@
 /* Global CSS */
 :root {
-  --primary: #880808; /* Rojo Sangre Toro */
+  --primary: #880808; /* Rojo Sangre Toro (Acento) */
   --primary-hover: #AA0000;
-  --primary-rgb: 136, 8, 8;
-  --dark: #000000;
-  --dark-surface: #111111;
-  --grey-deep: #2A2A2A;
-  --grey-medium: #4A4A4A;
-  --grey-light: #E0E0E0;
-  --light: #F5F5F5;
+  --dark: #1A1A1A;
+  --dark-surface: #2C2C2C;
+  --grey-deep: #333333;
+  --grey-medium: #707B7C; /* Gris predominante */
+  --grey-light: #E5E7E9;
+  --light: #F8F9F9;
   --light-bg: #FFFFFF;
-  --text-dark: #111111;
-  --text-grey: #555555;
-  --text-light: #F5F5F5;
+  --text-dark: #212F3D;
+  --text-grey: #566573;
+  --text-light: #FDFEFE;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -70,6 +69,7 @@ a {
 .btn-primary {
   background-color: var(--primary);
   color: var(--light);
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
 .btn-primary:hover {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,6 +9,12 @@ import { CommonModule } from '@angular/common';
 })
 export class App {
   title = 'JC Constructora S.A.S';
+  isScrolled = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 150;
+  }
 
   services = [
     {
