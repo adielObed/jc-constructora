@@ -2,11 +2,11 @@
 
 /* Header */
 .header {
-  background-color: rgba(255, 255, 255, 0.82); /* Blanco traslúcido profesional */
-  backdrop-filter: blur(12px); /* Efecto Frosted Glass de alta gama */
-  -webkit-backdrop-filter: blur(12px);
-  color: #000000;
-  padding: 12px 5%;
+  background-color: rgba(0, 0, 0, 0.85); /* Fondo negro traslúcido */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: var(--light);
+  padding: 15px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,8 +14,8 @@
   width: 100%;
   top: 0;
   z-index: 1000;
-  border-bottom: 3px solid var(--primary); /* Acento amarillo corporativo */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-bottom: 2px solid var(--primary); /* Acento rojo sangre */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
 
@@ -50,7 +50,7 @@
   cursor: pointer;
   font-weight: 600;
   font-size: 1rem;
-  color: #000000;
+  color: var(--light);
   transition: var(--transition);
   position: relative;
   padding: 5px 0;
@@ -77,14 +77,14 @@
 
 .header-contact {
   font-family: 'Outfit', sans-serif;
-  color: #000000; /* Texto negro para contraste */
+  color: var(--light);
   font-weight: 800;
-  background-color: var(--primary); /* Fondo amarillo sólido */
-  padding: 12px 28px;
-  border-radius: 6px; /* Bordes técnicos, no redondeados */
-  border: none;
+  background-color: var(--primary);
+  padding: 10px 24px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.1);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(136, 8, 8, 0.4);
 }
 
 .header-contact:hover {
@@ -107,7 +107,7 @@
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  color: #000000;
+  color: var(--light);
   padding-top: 80px;
   overflow: hidden;
 }
@@ -117,7 +117,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.85);
+  background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -153,12 +153,13 @@
   line-height: 1.1;
   text-transform: capitalize;
   font-weight: 900;
-  color: #000000;
+  color: var(--light);
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .hero p {
   font-size: 1.2rem;
-  color: #000000;
+  color: rgba(255,255,255,0.8);
   margin-bottom: 40px;
   max-width: 600px;
 }
@@ -171,9 +172,10 @@
   align-items: center;
   gap: 10px;
   background-color: var(--primary);
-  color: var(--dark);
+  color: var(--light);
   font-weight: 700;
   border: none;
+  box-shadow: 0 8px 25px rgba(136, 8, 8, 0.3);
 }
 
 .hero .btn span {
@@ -198,14 +200,14 @@
   align-items: center;
   gap: 15px;
   margin-bottom: 10px;
-  color: var(--text-grey);
+  color: var(--primary);
 }
 
 .section-label::before {
   content: '';
   width: 40px;
   height: 2px;
-  background-color: var(--text-dark);
+  background-color: var(--primary);
 }
 
 .section-header h2 {
@@ -241,7 +243,7 @@
 
 /* Fuerte contraste para servicios - Elemento insignia */
 .service-card:nth-child(2) {
-  background-color: var(--dark-surface);
+  background-color: var(--primary);
   color: var(--light);
   border: none;
 }
@@ -251,17 +253,17 @@
 }
 
 .service-card:nth-child(2) .service-content p {
-  color: #ccc;
+  color: rgba(255,255,255,0.8);
 }
 
 .service-card:nth-child(3) {
-  background-color: var(--primary);
-  color: var(--dark);
+  background-color: var(--dark-surface);
+  color: var(--light);
   border: none;
 }
 
 .service-card:nth-child(3) .service-content p {
-  color: #333;
+  color: var(--grey-light);
 }
 
 .service-image-box {
@@ -316,13 +318,13 @@
 }
 
 .service-card:nth-child(2) .service-icon {
-  background: var(--primary);
-  color: var(--dark);
+  background: var(--light);
+  color: var(--primary);
 }
 
 .service-card:nth-child(3) .service-icon {
-  background: var(--dark);
-  color: var(--primary);
+  background: var(--primary);
+  color: var(--light);
 }
 
 .service-content h3 {
@@ -339,12 +341,12 @@
 
 /* Projects - Retornado a Oscuro Premium */
 .projects-section {
-  background-color: #f8f9fa;
-  color: #000000;
+  background-color: #0c0c0c;
+  color: var(--light);
 }
 
 .projects-section .section-header h2 {
-  color: #111111;
+  color: var(--light);
 }
 
 .projects-section .section-label {
@@ -402,7 +404,7 @@
 
 /* About Section - Retornado a Oscuro Premium */
 .about-section {
-  background-color: #ffffff;
+  background-color: #f1f1f1;
   color: #333333;
 }
 
@@ -488,10 +490,10 @@
 
 /* Footer */
 .footer {
-  background-color: #f4f4f4;
-  color: #000000;
+  background-color: #0c0c0c;
+  color: var(--light);
   padding: 0;
-  border-top: 1px solid #ddd;
+  border-top: 2px solid var(--primary);
 }
 
 /* Fila superior: logo + desc centrado */
@@ -529,7 +531,7 @@
 }
 
 .footer-desc {
-  color: #000000;
+  color: rgba(255,255,255,0.7);
   font-size: 0.95rem;
   line-height: 1.7;
   max-width: 500px;
@@ -573,7 +575,7 @@
 }
 
 .footer-links li {
-  color: #000000;
+  color: rgba(255,255,255,0.8);
   font-size: 0.9rem;
   cursor: pointer;
   transition: var(--transition);
@@ -616,7 +618,7 @@
 
 .footer-contact-item small {
   display: block;
-  color: #333;
+  color: var(--primary);
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -625,7 +627,7 @@
 
 .footer-contact-item a,
 .footer-contact-item span {
-  color: #000000;
+  color: rgba(255,255,255,0.9);
   font-size: 0.9rem;
   display: block;
 }
@@ -640,7 +642,7 @@
   align-items: center;
   padding: 25px 0;
   font-size: 0.82rem;
-  color: #000000;
+  color: rgba(255,255,255,0.5);
 }
 
 /* Responsive footer */
@@ -823,7 +825,7 @@
 
 .nav-btn:hover {
   background: var(--primary);
-  color: black;
+  color: white;
 }
 
 /* Instagram Grid */
@@ -910,10 +912,9 @@
 
 .lightbox-caption {
   margin-top: 20px;
-  color: white;
   text-align: center;
   background: var(--primary);
-  color: black;
+  color: white;
   padding: 10px 30px;
   border-radius: 30px;
   font-weight: 700;
