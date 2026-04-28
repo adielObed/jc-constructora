@@ -6,8 +6,10 @@
       <a href="#"><span class="material-symbols-outlined">share</span></a>
     </div>
     <div class="top-bar-contact">
-      <a [href]="'tel:' + contact.phones[0]"><span class="material-symbols-outlined">call</span> {{ contact.phones[0] }}</a>
-      <a href="mailto:contacto@jcconstructora.com.co"><span class="material-symbols-outlined">mail</span> contacto@jcconstructora.com.co</a>
+      <a [href]="'tel:' + contact.phones[0]"><span class="material-symbols-outlined">call</span> {{ contact.phones[0]
+        }}</a>
+      <a href="mailto:contacto@jcconstructora.com.co"><span class="material-symbols-outlined">mail</span>
+        contacto@jcconstructora.com.co</a>
     </div>
   </div>
 </div>
@@ -16,7 +18,7 @@
 <header class="header" [class.scrolled]="isScrolled">
   <div class="logo">
     <a (click)="scrollTo('hero')" style="cursor: pointer;">
-      <img src="assets/images/logo-jc.jpg" alt="JC Constructora S.A.S" class="logo-img">
+      <img src="assets/images/logo-jc.png" alt="JC Constructora S.A.S" class="logo-img">
     </a>
   </div>
   <nav class="desktop-nav">
@@ -40,7 +42,8 @@
   <div class="hero-content centered">
     <h1 class="hero-title">Ingeniería Y Construcción En Colombia</h1>
     <div class="hero-bar"></div>
-    <p class="hero-subtitle">Especialistas en infraestructura técnica, mantenimiento industrial y diseño estructural de alto impacto.</p>
+    <p class="hero-subtitle">Especialistas en infraestructura técnica, mantenimiento industrial y diseño estructural de
+      alto impacto.</p>
     <div class="hero-btns">
       <button (click)="scrollTo('services')" class="btn btn-primary">NUESTROS SERVICIOS</button>
       <button (click)="scrollTo('portafolio')" class="btn btn-outline">VER PORTAFOLIO</button>
@@ -223,7 +226,7 @@
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-top" style="padding-bottom: 20px;">
-    <img src="assets/images/logo-jc.jpg" alt="JC Constructora S.A.S" class="footer-top-logo">
+    <img src="assets/images/logo-jc.png" alt="JC Constructora S.A.S" class="footer-top-logo">
     <p class="footer-desc">Expertos en infraestructura, mantenimiento industrial y soldadura certificada. Su aliado
       estratégico para la ejecución de grandes proyectos en el Casanare.</p>
     <p style="margin-top: 25px; font-weight: 700; color: var(--primary); font-size: 1.1rem; max-width: 700px;">{{
